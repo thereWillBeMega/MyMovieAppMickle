@@ -21,31 +21,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // Do any additional setup after loading the view.
         //http://www.omdbapi.com/?i=tt3896198&apikey=6d1f76c5
-      var movies = getMovie()
-        print(movies)
+      getMovie()
+        
     }
     
     var movieURL = URL(string: "http://www.omdbapi.com/?s=ghost&apikey=6d1f76c5")!
-        
-    func getMovie() -> NSDictionary{
+    var movies: NSDictionary = [:]
+    
+    func getMovie(){
             let session = URLSession.shared
             
          
             
             let dataTask = session.dataTask(with: movieURL) { data, response, error in if let e = error{
-                print("AHHHHHH \(e)")
+                print("Error \(e)")
                 
             }else{
                 if let dog = data{
                     
                     if let jason = try? (JSONSerialization.jsonObject(with: dog, options: .fragmentsAllowed) as! NSDictionary){
-                        print(jason)
+//                        print(jason)
                         print("=(")
+                        self.movies = jason
+//                        print(self.movies)
                         
-                        return jason
-                        
-                        
-                        
+                        if let moviesArray = jason.value(forKey: "Search"){
+                            print(moviesArray)
+                            
+                            
+                            
+                            
+                        }
                         
                     }
                 }
@@ -60,11 +66,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let myCell = UITableViewCell()
+        return myCell
     }
  
 
