@@ -22,11 +22,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view.
         //http://www.omdbapi.com/?i=tt3896198&apikey=6d1f76c5
       getMovie()
+        tableViewOutlet.reloadData()
         
     }
     
+    @IBOutlet weak var textFieldOutlet: UITextField!
+    
+    @IBOutlet weak var errorOutlet: UILabel!
+    
+    var searchedMovie = "ghost"
     var movieURL = URL(string: "http://www.omdbapi.com/?s=ghost&apikey=6d1f76c5")!
-    var movies: NSDictionary = [:]
+    var movies: [NSDictionary] = []
+    
+    
+    @IBAction func searchAction(_ sender: Any) {
+        searchedMovie = textFieldOutlet.text!
+        movieURL = URL(string: "http://www.omdbapi.com/?s=\(searchedMovie)&apikey=6d1f76c5")!
+        getMovie()
+        DispatchQueue.main.async {
+            self.tableViewOutlet.reloadData()
+        }
+     
+    }
+    
     
     func getMovie(){
             let session = URLSession.shared
@@ -42,15 +60,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     if let jason = try? (JSONSerialization.jsonObject(with: dog, options: .fragmentsAllowed) as! NSDictionary){
 //                        print(jason)
                         print("=(")
-                        self.movies = jason
+                       
 //                        print(self.movies)
-                        
-                        if let moviesArray = jason.value(forKey: "Search"){
+                        if let moviesArray = jason.value(forKey: "Search") as? [NSDictionary]{
                             print(moviesArray)
+                            self.movies = moviesArray
+                            DispatchQueue.main.async {
+                                self.errorOutlet.isHidden = true
+                            }
+                           
                             
                             
-                            
-                            
+                        }else{
+                            DispatchQueue.main.async {
+                                self.errorOutlet.isHidden = false
+
+                            }
                         }
                         
                     }
@@ -66,11 +91,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return movies.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let myCell = UITableViewCell()
+        let myCell = tableView.dequeueReusableCell(withIdentifier: "myCell")!
+        myCell.textLabel?.text = movies[indexPath.row].value(forKey: "Title") as? String
+//        myCell.textLabel?.text = "Hello"
         return myCell
     }
  
