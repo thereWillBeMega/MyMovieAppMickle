@@ -6,7 +6,7 @@ import UIKit
 
 class AppData{
     
-    var currentMovieIndex: Int = 0
+    static var currentMovieIndex: Int = 0
     
 }
 
