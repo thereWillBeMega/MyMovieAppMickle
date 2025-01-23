@@ -3,6 +3,13 @@
 
 import UIKit
 
+
+class AppData{
+    
+    var currentMovieIndex: Int = 0
+    
+}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     
@@ -37,11 +44,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func searchAction(_ sender: Any) {
         searchedMovie = textFieldOutlet.text!
+        print(searchedMovie)
         movieURL = URL(string: "http://www.omdbapi.com/?s=\(searchedMovie)&apikey=6d1f76c5")!
+        print(movieURL)
         getMovie()
-        DispatchQueue.main.async {
             self.tableViewOutlet.reloadData()
-        }
+//        self.tableViewOutlet.reloadData()
+//        self.tableViewOutlet.reloadData()
+//        self.tableViewOutlet.reloadData()
+//        self.tableViewOutlet.reloadData()
+   
+  
+  
      
     }
     
@@ -93,6 +107,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        AppData.currentMovieIndex = indexPath.row
+        performSegue(withIdentifier: "theSegue", sender: self)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

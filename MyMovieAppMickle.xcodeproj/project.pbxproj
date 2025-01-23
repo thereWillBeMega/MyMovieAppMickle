@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		37118D9F2D42823F00D27E9D /* oneMovieViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37118D9E2D42823F00D27E9D /* oneMovieViewConroller.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		374F2E9B2D37F8D6008B2051 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37118D9E2D42823F00D27E9D /* oneMovieViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oneMovieViewConroller.swift; sourceTree = "<group>"; };
 		374F2E812D37F8D4008B2051 /* MyMovieAppMickle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMovieAppMickle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		374F2E9A2D37F8D6008B2051 /* MyMovieAppMickleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyMovieAppMickleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		374F2EA42D37F8D6008B2051 /* MyMovieAppMickleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyMovieAppMickleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +93,7 @@
 		374F2E782D37F8D4008B2051 = {
 			isa = PBXGroup;
 			children = (
+				37118D9E2D42823F00D27E9D /* oneMovieViewConroller.swift */,
 				374F2E832D37F8D4008B2051 /* MyMovieAppMickle */,
 				374F2E9D2D37F8D6008B2051 /* MyMovieAppMickleTests */,
 				374F2EA72D37F8D6008B2051 /* MyMovieAppMickleUITests */,
@@ -249,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37118D9F2D42823F00D27E9D /* oneMovieViewConroller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
