@@ -49,10 +49,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print(movieURL)
         getMovie()
             self.tableViewOutlet.reloadData()
-//        self.tableViewOutlet.reloadData()
-//        self.tableViewOutlet.reloadData()
-//        self.tableViewOutlet.reloadData()
-//        self.tableViewOutlet.reloadData()
+        self.tableViewOutlet.reloadData()
+        self.tableViewOutlet.reloadData()
+        self.tableViewOutlet.reloadData()
+        self.tableViewOutlet.reloadData()
    
   
   
